@@ -368,16 +368,129 @@ Dog.num_dogs()
 # Private and public classes
 # _ in front of the class or method indicates that it is private
 
+# Optional parameters
+def func(word, freq = 3):
+    print(word*freq)
 
+call = func('Jee')
+call = func('Jee', 5)
 
+# Map function
+li = [1,2,3,4,5,6,7,8,9,10]
 
+def func(x):
+    return x**x
 
+print(list(map(func,li)))
 
+# List comprehension
+print([func(x) for x in li])
+print([func(x) for x in li if x%2==0])
 
+# Filter function
+def add7(x):
+    return x+7
 
+def isOdd(x):
+    return x%2 != 0
 
+a = [1,2,3,4,5,6,7,8,9,10]
+b = list(filter(isOdd, a))
+c = list(map(add7, b))
 
+# Lambda function
+# Example 1
+def func(x):
+    func2 = lambda x: x+5
+    return func2(x) + 10
+func3 = lambda x, y=5: x+y
 
+print(func(2))
+print(func3(10))
 
+# Example 2
+a = [1,2,3,4,5,6,7,8,9,10]
+newList = list(map(lambda x: x+5, a))
+print(newList)
+
+newList2 = list(filter(lambda x: x%2 == 0, a))
+print(newList2)
+
+# Collections: Counter
+# Example 1
+from collections import Counter
+c = Counter('gallad')
+print(c)
+c = Counter(['a', 'a', 'b', 'c', 'c'])
+print(c)
+c = Counter({'a':1, 'b':2})
+print(c)
+c = Counter(cats=2, dogs=7)
+print(c)
+
+print(list(c.elements()))
+c.most_common(1)
+
+# Example 2
+c = Counter(a=4, b=2, c=0, d=-2)
+d = ['a', 'b', 'b', 'c']
+
+c.subtract(d)
+print(c)
+c.update(d)
+print(c)
+c.clear()
+print(c)
+
+# Example 3
+c = Counter(a=4, b=2, c=0, d=-2)
+d = Counter(['a', 'b', 'b', 'c'])
+print(c+d)
+print(c-d)
+print(c&d)
+print(c|d)
+
+# Collections: Named tuple
+from collections import namedtuple
+Point = namedtuple('Point', 'x y z')
+
+newP = Point(3,4,5)
+print(newP)
+print(newP.x, newP.y, newP.z)
+print(newP[0])
+print(newP._asdict())
+print(newP._fields)
+
+newP = newP._replace(y=6)
+print(newP)
+
+p2 = Point._make(['a', 'b', 'c'])
+print(p2)
+
+# Collections: Deque
+from collections import deque
+d = deque('Hello')
+d.append('4')
+d.append(5)
+print(d)
+d.pop()
+print(d)
+d.popleft()
+print(d)
+d.clear()
+print(d)
+
+d.extend('456')
+print(d)
+d.extendleft('123')
+print(d)
+
+d.rotate(-1)
+print(d)
+
+d = deque('hello', maxlen=5)
+print(d)
+d.append(1)
+print(d)
 
 
