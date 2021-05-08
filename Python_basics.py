@@ -1,71 +1,71 @@
 # Catching up with some Python basics first time in a long time
 
 # Inputting strings
-# print('Give me your name:')
-# name = input()
-# print('Hello', name)
+print('Give me your name:')
+name = input()
+print('Hello', name)
 
 # Operators
-# print('Pick a number: ')
-# num1 = input()
-# print('Pick another number: ')
-# num2 = input()
-# 
-# sum = int(num1) + int(num2)
-# 
-# print(sum)
+print('Pick a number: ')
+num1 = input()
+print('Pick another number: ')
+num2 = input()
 
-# print(num1/num2) # Division
-# print(num1**num2) # Power
-# print(num1//num2) # Integer division
-# print(num1%num2) # Modulus
+sum = int(num1) + int(num2)
+
+print(sum)
+
+print(num1/num2) # Division
+print(num1**num2) # Power
+print(num1//num2) # Integer division
+print(num1%num2) # Modulus
 
 # Conditions (<>)
-# print(4 != 5)
+print(4 != 5)
 
 # If/else
-# print('How old are you? ')
-# age = input()
-# 
-# if int(age) >= 18:
-#     print('You are an adult')
-# else:
-#     print('You are a child')
-# 
+print('How old are you? ')
+age = input()
+
+if int(age) >= 18:
+    print('You are an adult')
+else:
+    print('You are a child')
+
 # Chained conditionals (and, or, not)
-# print('How old are you? ')
-# age = input()
-# 
-# if int(age) >= 18:
-#     print('You are an adult')
-# elif (int(age) >= 15) and (int(age) < 18):
-#     print('You are a teenager')
-# else:
-#     print('You are a child')
+print('How old are you? ')
+age = input()
+
+if int(age) >= 18:
+    print('You are an adult')
+elif (int(age) >= 15) and (int(age) < 18):
+    print('You are a teenager')
+else:
+    print('You are a child')
 
 # Nested statements
-# x = 2
-# y = 3
-# if x == 2:
-#     if y == 3:
-#         print('x = 2 and y = 3')
-#     else:
-#         print('x = 2 but y != 3')
-# else:
-#     print('x != 2')
+x = 2
+y = 3
+if x == 2:
+    if y == 3:
+        print('x = 2 and y = 3')
+    else:
+        print('x = 2 but y != 3')
+else:
+    print('x != 2')
 
 # For loops
-# for x in range(0, 10, 1): # (start, stop, step)
-#     print(x)
+for x in range(0, 10, 1): # (start, stop, step)
+    print(x)
 
 # While loops
-# loop = True
-# 
-# while loop:
-#     password = input('Enter password: ')
-#     if password == 'salasana':
-#         break
-#         
+loop = True
+
+while loop:
+    password = input('Enter password: ')
+    if password == 'salasana':
+        break
+
 # Lists
 fruits = ['apple', 'pear', 3]
 print(fruits)
@@ -194,6 +194,190 @@ def func(x):
         return newVar
 func(2)
 print(loop)
+
+# Introduction to objects
+x = 5
+y = 'string'
+
+def func(x):
+    return x+1
+
+print(y.replace('s', ''))
+print(func(x))
+print(type(x))
+print(type(y))
+
+# Creating classes
+class Dog(object):
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def speak(self):
+        print('I am', self.name, 'and I am', self.age, 'years old')
+    
+    def change_age(self, age):
+        self.age = age 
+        
+    def agg_weight(self, weight):
+        self.weight = weight
+        
+jaakko = Dog('Jaakko', 28)
+jaakko.speak()
+jaakko.change_age(29)
+jaakko.agg_weight(95)
+print(jaakko.weight)
+
+# Inheritance
+# Example 1
+class Dog(object):
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def speak(self):
+        print('I am', self.name, 'and I am', self.age, 'years old')
+
+    def talk(self):
+        print('Bark!')
+        
+class Cat(Dog):
+    def __init__(self, name, age, color):
+        super().__init__(name, age)
+        self.color = color
+    
+    def talk(self):
+        print('Meow!')
+
+jaakko = Cat('Jaakko', 5, 'blue')
+jaakko.speak()
+jaakko.talk()
+
+# Example 2
+class Vehicle():
+    def __init__(self, price, gas, color):
+        self.price = price
+        self.gas = gas
+        self.color = color
+        
+    def fillUpTank(self):
+        self.gas = 100
+        
+    def emptyTank(self):
+        self.gas = 0
+        
+    def gasLeft(self):
+        return self.gas
+    
+class Car(Vehicle):
+    def __init__(self, price, gas, color, speed):
+        super().__init__(price, gas, color)
+        self.speed = speed
+        
+    def beep(self):
+        print('beep beep')
+        
+class Truck(Vehicle):
+    def __init__(self, price, gas, color, tires):
+        super().__init__(price, gas, color)
+        self.tires = tires
+            
+    def beep(self):
+        print('honk honk')
+
+rekka = Truck(100, 10, 'green', 'jee')
+rekka.beep()
+
+# Overloading methods
+class Point():
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+        self.coords = (self.x, self.y)
+    
+    def move(self, x, y):
+        self.x += x
+        self.y += y
+        
+    def __add__(self, p):
+        return Point(self.x + p.x, self.y + p.y)
+
+    def __sub__(self, p):
+        return Point(self.x - p.x, self.y - p.y)
+
+    def __mul__(self, p):
+        return self.x * p.x + self.y * p.y
+
+    def __len__(self):
+        import math
+        return math.sqrt(self.x**2 + self.y**2)
+
+    def __gt__(self, p):
+        return self.__len__() > p.__len__()
+
+    def __ge__(self, p):
+        return self.__len__() >= p.__len__()
+
+    def __lt__(self, p):
+        return self.__len__() < p.__len__()
+
+    def __le__(self, p):
+        return self.__len__() <= p.__len__()
+
+    def __eq__(self, p):
+        return self.x == p.x and self.y == p.y
+
+    def __str__(self):
+        return '(' + str(self.x) + ',' + str(self.y) + ')'
+
+p1 = Point(3,4)
+p2 = Point(3,2)
+p3 = Point(1,3)
+p4 = Point(0,1)
+p5 = p1 + p2
+p6 = p4 - p1
+p7 = p2*p3
+
+print(p5, p6, p7)
+
+# Static methods and class methods
+class Dog:
+    dogs = []
+    
+    def __init__(self, name):
+        self.name = name
+        self.dogs.append(self)
+        
+    @classmethod
+    def num_dogs(cls):
+        return len(cls.dogs)
+
+    @staticmethod
+    def bark(n):
+        for _n in range(n):
+            print('Bark!')
+
+koira = Dog('Hauva')
+
+koira.bark(4)
+Dog.bark(4)
+
+koira.num_dogs()
+Dog.num_dogs()
+
+# Private and public classes
+# _ in front of the class or method indicates that it is private
+
+
+
+
+
+
+
+
+
+
+
 
 
 
